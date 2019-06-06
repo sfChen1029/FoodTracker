@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class MealTableViewController: UITableViewController {
     
     //MARK: Properties
@@ -93,6 +94,15 @@ class MealTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: Actions
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? MealViewController, let meal = sourceViewController.meal {
+            let newIndexPath = IndexPath(row: meals.count, section: 0)
+            meals.append(meal)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
     
     //MARK: Private Methods
     
